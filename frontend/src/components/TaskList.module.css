@@ -1,0 +1,19 @@
+.listTitle {
+  font: var(--font-heading);
+}
+
+.listContainer {
+  height: 100%;
+  flex-grow: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+  overflow: hidden;
+  width: 100%;
+  list-style-type: none;
+}
+
+.outer {
+  margin-top: 3rem;
+}

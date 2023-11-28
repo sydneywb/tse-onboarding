@@ -6,7 +6,9 @@ import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
 import { isHttpError } from "http-errors";
+
 import taskRoutes from "src/routes/task";
+import tasksRoutes from "src/routes/tasks";
 
 const app = express();
 
@@ -54,5 +56,7 @@ app.use((error: unknown, req: Request, res: Response, next: NextFunction) => {
 
   res.status(statusCode).json({ error: errorMessage });
 });
+app.use("/api/task", taskRoutes);
+app.use("/api/tasks", tasksRoutes);
 
 export default app;
