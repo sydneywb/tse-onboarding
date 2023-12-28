@@ -97,7 +97,8 @@ export const updateTask: RequestHandler = async (req, res, next) => {
     if (task == null) {
       res.status(404);
     }
-    res.status(200).json(task);
+    const updatedTask = await TaskModel.findById(id);
+    res.status(200).json(updatedTask);
   } catch (error) {
     next(error);
   }
