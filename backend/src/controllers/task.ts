@@ -7,6 +7,7 @@ import createHttpError from "http-errors";
 import { validationResult } from "express-validator";
 import TaskModel from "src/models/task";
 import validationErrorParser from "src/util/validationErrorParser";
+import { Model } from "mongoose";
 
 /**
  * This is an example of an Express API request handler. We'll tell Express to
@@ -77,6 +78,26 @@ export const removeTask: RequestHandler = async (req, res, next) => {
     const result = await TaskModel.deleteOne({ _id: id });
 
     res.status(200).json(result);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateTask: RequestHandler = async (req, res, next) => {
+  const errors = validationResult(req);
+  const { _id } = req.body;
+  const { id } = req.params;
+  try {
+    validationErrorParser(errors);
+
+    if (_id != id) {
+      res.status(400);
+    }
+    const task = await Model.findByIdAndUpdate(id);
+    if (task == null) {
+      res.status(404);
+    }
+    res.status(200).json(task);
   } catch (error) {
     next(error);
   }

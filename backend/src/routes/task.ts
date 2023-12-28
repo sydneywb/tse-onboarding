@@ -17,6 +17,10 @@ router.get("/:id", TaskController.getTask);
  * TaskValidator.createTask processes the request and determines whether the
  * request should be sent through or an error should be thrown.
  */
+
+// I added this:
+router.post("/:id", TaskValidator.updateTask, TaskController.updateTask);
+
 router.post("/", TaskValidator.createTask, TaskController.createTask);
 router.delete("/:id", TaskController.removeTask);
 
