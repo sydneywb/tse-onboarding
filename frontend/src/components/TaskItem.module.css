@@ -10,7 +10,7 @@
 
 .textContainer {
   height: 100%;
-  flex-grow: 10;
+  flex-grow: 29;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

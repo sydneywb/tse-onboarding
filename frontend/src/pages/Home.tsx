@@ -16,7 +16,7 @@ export function Home() {
         <Link to="/about">About this app</Link>
       </p>
       <TaskForm mode="create" />
-      <TaskList title="MY TASKS" />
+      <TaskList title="All tasks" />
     </Page>
   );
 }
